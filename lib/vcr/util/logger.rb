@@ -14,7 +14,7 @@ module VCR
 
     def request_summary(request, request_matchers)
       attributes = [request.method, request.uri]
-      attributes << request.body.to_s[0, 80].inspect if request_matchers.include?(:body)
+      attributes << request.body.to_s[0, 500].inspect if request_matchers.include?(:body)
       attributes << request.headers.inspect          if request_matchers.include?(:headers)
       "[#{attributes.join(" ")}]"
     end
